@@ -57,15 +57,53 @@ var sprintFunctions = {
      return true;
   },
 
-  fizzBuzz: function(){  
-    // your code here
+  fizzBuzz: function(num){  
+    var i;
+    var arr = [];
+    for (i = 1; i < num + 1; i++) {
+      if (i % 3 === 0 && i % 5 === 0) {
+        arr.push("FIZZBUZZ");
+      } else if (i % 5 === 0) {
+        arr.push("BUZZ");
+      } else if (i % 3 === 0) {
+        arr.push("FIZZ");
+      } else {
+        arr.push(i);
+      }
+    }
+    return arr;
   },
 
-  myMap: function(){  
-    // your code here
+  myMap: function(arr, fun){  
+    var mappedArr = [];
+    arr.forEach(function(el){
+      mappedArr.push(fun(el));
+    })
+    return mappedArr;
   },
 
-  primes: function(){  
-    // your code here
+  primes: function(num){  
+    var arr = [];
+    var i;
+    var isPrime = function(n){
+      if (n <= 1) {
+        return false;
+      } else {
+        var i;
+        for (i = 2; i < n; i++) {
+          if (n % i === 0) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
+
+    for (i = 1; i < num; i++) {
+      if (isPrime(i) === true ) {
+        arr.push(i);
+      }
+    }
+    return arr;
   },
 }
