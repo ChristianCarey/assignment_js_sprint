@@ -148,5 +148,38 @@ var biggerProblems = {
     left = arr.slice(0, midpoint),
     right = arr.slice(midpoint);
     return this.merge(this.mergeSort(left), this.mergeSort(right));
+  },
+  quickSort: function(arr) {
+    if (arr.length === 0) {
+      return [];
+    }
+    var left = [],
+        right = [],
+        pivot = arr[0],
+        i;
+    
+    for (i = 1; i < arr.length; i++) {
+      if (arr[i] < pivot) {
+        left.push(arr[i]);
+      } else {
+        right.push(arr[i]);
+      }
+    }
+    return this.quickSort(left).concat(pivot, this.quickSort(right));
   }
 }
+
+function Roulette(initial_bankroll){
+  this.bankroll = initial_bankroll;
+  this.get_bankroll = function(){
+    return this.bankroll;
+  }
+  this.spin = function(bet, selection){
+    result = Math.floor((Math.random() * 35 + 1)
+    if (result === selection) 
+  };
+  this.buyIn = function(){};
+}
+
+var testArr = [4,1,7,8765,1,2,2,-12,0];
+console.log(biggerProblems.quickSort(testArr));
