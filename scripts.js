@@ -107,3 +107,46 @@ var sprintFunctions = {
     return arr;
   },
 }
+
+var biggerProblems = {
+  bubbleSort: function(arr) {
+    var i;
+    var swapped = true;
+    while (swapped === true) {
+      for (i = 0; i < arr.length - 1; i++) {
+        swapped = false;
+        if (arr[i] > arr[i + 1]) {
+          var temp = arr[i];
+          arr[i] = arr[i + 1];
+          arr[i + 1] = temp;
+          swapped = true;
+        }
+      }
+    }
+    return arr;
+  },
+  merge: function(left, right) {
+    var result = [];
+    while (left.length > 0 || right.length > 0) {
+      if (left.length === 0) {
+        result.push(right.shift());
+      } else if (right.length === 0) {
+        result.push(left.shift());
+      } else if (left[0] <= right[0]) {
+        result.push(left.shift());
+      } else if (right[0] <= left[0]) {
+        result.push(right.shift());
+      }
+    }
+    return result;
+  },
+  mergeSort: function(arr) {
+    if (arr.length < 2) {
+      return arr;
+    }
+    var midpoint = Math.floor(arr.length / 2),
+    left = arr.slice(0, midpoint),
+    right = arr.slice(midpoint);
+    return this.merge(this.mergeSort(left), this.mergeSort(right));
+  }
+}
